@@ -5,7 +5,9 @@ var img1 = document.getElementById('mask');
 navigator.getUserMedia({video: true}, function(stream) {
     video.srcObject = stream;
     video.play();
-}, function(err) { alert("there was an error " + err)});
+}, function(err) {
+    alert("Please reload the page, there was an error " + err);
+});
 
 function download() {
     var ctx = canvas.getContext('2d');
