@@ -6,7 +6,7 @@ navigator.getUserMedia({video: true}, function(stream) {
     video.srcObject = stream;
     video.play();
 }, function(err) {
-    alert("Please reload the page, there was an error " + err);
+    //alert("Please reload the page, there was an error " + err);
 });
 
 function download() {
