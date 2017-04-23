@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Proud to work @ SAP France</title>
+<link rel="icon" type="image/png" href="img/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<html>
+    <body>
+        <div class="top-bar">
+            <img src="img/sap_logo.png" class="app-logo" />
+            <div class="app-title">I am <b>proud</b> to work @ <b>SAP France</b></div>
+        </div>
+        <div class="main-container">
+            <video id="v" width="640" height="480"></video>
+            <canvas id="c" style="display:none;" width="640" height="480"></canvas>
+        </div>
+        <div class="mask-container">
+            <img id="mask" src="../img/mask2.png" />
+        </div>
+        <div class="previous">
+        <img src="img/left.png" />
+        </div>
+        <div class="next">
+            <img src="img/right.png" />
+        </div>
+        <div class="bottom">
+            <a id="downloadLnk" download="iamproudtoworkatsap.jpg">
+                <img class="microphone" src="img/download.png" width="305px" height="54px" />
+            </a>
+        </div>
+    </body>
+    <script type = 'text/javascript'>
+        var canvas = document.getElementById('c');
+        var video = document.getElementById('v');
+        var img1 = document.getElementById('mask');
+
+        navigator.getUserMedia({video: true}, function(stream) {
+            video.srcObject = stream;
+            video.play();
+        }, function(err) { alert("there was an error " + err)});
+
+        function download() {
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, 640, 480);
+            ctx.drawImage(img1, 0, 0, 640, 480);
+
+            var dt = canvas.toDataURL('image/jpeg');
+            this.href = dt;
+        };
+        downloadLnk.addEventListener('click', download, false);
+    </script>
+</html>
+
