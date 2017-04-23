@@ -176,7 +176,7 @@ body {
     font-size: 22px;
     font-family: RobotoLight;
     left: 96px;
-    width: 327px;
+    width: 260px;
 }
 
 .app-title {
@@ -192,7 +192,7 @@ body {
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 20% }
+  to { width: 15% }
 }
 
 /* The typewriter cursor effect */
