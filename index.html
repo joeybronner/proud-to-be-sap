@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Proud to work @ SAP France</title>
-<link rel="icon" type="image/png" href="img/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="img/favicon/manifest.json">
+<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <html>
     <body>
@@ -28,44 +33,6 @@
             </a>
         </div>
     </body>
-    <script type = 'text/javascript'>
-        var canvas = document.getElementById('c');
-        var video = document.getElementById('v');
-        var img1 = document.getElementById('mask');
-
-        function detectmob() { 
-         if( navigator.userAgent.match(/Android/i)
-         || navigator.userAgent.match(/webOS/i)
-         || navigator.userAgent.match(/iPhone/i)
-         || navigator.userAgent.match(/iPad/i)
-         || navigator.userAgent.match(/iPod/i)
-         || navigator.userAgent.match(/BlackBerry/i)
-         || navigator.userAgent.match(/Windows Phone/i)
-         ){
-            return true;
-          }
-         else {
-            return false;
-          }
-        }
-
-        navigator.getUserMedia({video: true}, function(stream) {
-            video.srcObject = stream;
-            video.play();
-        }, function(err) { alert("there was an error " + err)});
-
-        function download() {
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, 640, 480);
-            ctx.drawImage(img1, 0, 0, 640, 480);
-
-            var dt = canvas.toDataURL('image/jpeg');
-            this.href = dt;
-        };
-        if (detectmob()) {
-            alert('mobile');
-        } 
-        downloadLnk.addEventListener('click', download, false);
-    </script>
+    <script type="text/javascript" src="js/script.js"></script>
 </html>
 
