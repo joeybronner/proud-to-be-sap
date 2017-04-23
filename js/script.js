@@ -2,13 +2,26 @@ var canvas = document.getElementById('c');
 var video = document.getElementById('v');
 var img1 = document.getElementById('mask');
 
-navigator.getUserMedia({video: true}, function(stream) {
-    video.srcObject = stream;
-    video.play();
-}, function(err) {
-    //alert("Please reload the page, there was an error " + err);
-});
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
+function onSuccess(mediaObj){
+    window.stream = mediaObj;
+    var video = document.querySelector("video");
+    video.src = window.URL.createObjectURL(mediaObj);
+    video.play();
+    //video.srcObject = stream;
+}
+ 
+//Our error callback where we will handle any issues
+function onError(errorObj){
+    console.log("There was an error: " + errorObj);
+}
+
+var mediaConstraints = { video: true };
+
+navigator.getUserMedia(mediaConstraints, onSuccess, onError)
+
+// Download
 function download() {
     var ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, 640, 480);
