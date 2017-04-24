@@ -59,6 +59,6 @@ function previous() {
 };
 
 function buttonAvailabilities(i) {
-    previous.disabled = i === 0;
-    next.disabled = i === (aMasks.length - 1);
+    buttonprevious.style.visibility = i === 0 ? 'hidden' : 'visible';
+    buttonnext.style.visibility = i === (aMasks.length - 1) ? 'hidden' : 'visible';
 };
