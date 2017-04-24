@@ -1,6 +1,9 @@
 var canvas = document.getElementById('c');
 var video = document.getElementById('v');
+var buttonnext = document.getElementById('btnext');
+var buttonprevious = document.getElementById('btprevious');
 var img1 = document.getElementById('mask');
+var aMasks = ['mask1.png', 'mask2.png'];
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -9,19 +12,14 @@ function onSuccess(mediaObj){
     var video = document.querySelector("video");
     video.src = window.URL.createObjectURL(mediaObj);
     video.play();
-    //video.srcObject = stream;
 }
- 
-//Our error callback where we will handle any issues
+
 function onError(errorObj){
     console.log("There was an error: " + errorObj);
 }
 
-var mediaConstraints = { video: true };
+navigator.getUserMedia({ video: true }, onSuccess, onError)
 
-navigator.getUserMedia(mediaConstraints, onSuccess, onError)
-
-// Download
 function download() {
     var ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, 640, 480);
@@ -31,3 +29,36 @@ function download() {
     this.href = dt;
 };
 downloadLnk.addEventListener('click', download, false);
+
+function next() {
+    var sCurrentMaskTemp = img1.src;
+    var sCurrentMask = sCurrentMaskTemp.substring(sCurrentMaskTemp.lastIndexOf('/') + 1, sCurrentMaskTemp.length);
+    var iCurrentMask = aMasks.indexOf(sCurrentMask);
+    var iExpectedMask = iCurrentMask + 1;
+    var iMasksLength = aMasks.length;
+
+    if (iExpectedMask < iMasksLength) {
+        img1.src = 'img/' + aMasks[iExpectedMask];
+    }
+
+    buttonAvailabilities(iExpectedMask);
+};
+
+function previous() {
+    var sCurrentMaskTemp = img1.src;
+    var sCurrentMask = sCurrentMaskTemp.substring(sCurrentMaskTemp.lastIndexOf('/') + 1, sCurrentMaskTemp.length);
+    var iCurrentMask = aMasks.indexOf(sCurrentMask);
+    var iExpectedMask = iCurrentMask - 1;
+    var iMasksLength = aMasks.length;
+
+    if (iExpectedMask >= 0) {
+        img1.src = 'img/' + aMasks[iExpectedMask];
+    }
+
+    buttonAvailabilities(iExpectedMask);
+};
+
+function buttonAvailabilities(i) {
+    previous.disabled = i === 0;
+    next.disabled = i === (aMasks.length - 1);
+};
