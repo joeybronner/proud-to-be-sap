@@ -27,11 +27,6 @@ app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));
 app.use('/fonts', express.static(__dirname + '/fonts'));
 
-/*app.get('/selectedprono', function (req, res) {
-    var prono = db.exec('SELECT raw FROM doublechances WHERE id_game NOT IN (SELECT id_game FROM results) ORDER BY id_game ASC LIMIT 1;');
-    res.json(prono);
-});*/
-
 var port = process.env.PORT;
 app.listen(port || 3000, function () {
     console.log('Live at Port 3000');
