@@ -15,14 +15,17 @@
             <div class="app-title">I am <b>proud</b> to work @ <b>SAP</b></div>
         </div>
         <div class="main-container">
-            <video id="v" width="640" height="480"></video>
-            <canvas id="c" style="display:none;" width="640" height="480"></canvas>
+            <video id="video" width="640" height="480"></video>
+            <canvas id="canvas" style="display:none;" width="640" height="480"></canvas>
+        </div>
+        <div id="default-people" class="default-people-container">
+            <img src="../img/nowebcam_people.png" />
         </div>
         <div class="mask-container">
-            <img id="mask" style="visibility:hidden;" src="../img/mask1.png" />
+            <img id="mask" src="img/mask1.png" />
         </div>
         <div id="msg" class="message-container">
-            <h1>Please allow your browser to use your webcam</h1>
+            Please allow your browser to use your webcam
         </div>
         <div class="previous">
         <img id="btprevious" style="visibility: hidden;" src="img/left.png" onclick="previous()" />
