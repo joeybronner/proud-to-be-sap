@@ -22,7 +22,12 @@ function onError (errorObj){
     console.log('There was an error: ' + errorObj);
 }
 
-navigator.getUserMedia({ video: true }, onSuccess, onError);
+var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g);
+if (isIE) {
+    msg.innerHTML = 'Internet Explorer / Edge browsers are not supported. Please use Chrome or Firefox.';
+} else {
+    navigator.getUserMedia({ video: true }, onSuccess, onError);
+}
 
 function download () {
     var ctx = canvas.getContext('2d');
