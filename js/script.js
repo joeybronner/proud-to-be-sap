@@ -5,7 +5,7 @@ var buttonprevious = document.getElementById('btprevious');
 var mask = document.getElementById('mask');
 var defaultPeople = document.getElementById('default-people');
 var msg = document.getElementById('msg');
-var aMasks = ['mask1.png', 'mask2.png'];
+var aMasks = ['mask1.png', 'mask2.png', 'mask3.png'];
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
