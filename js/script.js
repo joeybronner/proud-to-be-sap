@@ -35,7 +35,20 @@ function download () {
     ctx.drawImage(mask, 0, 0, 640, 480);
 
     var dt = canvas.toDataURL('image/jpeg');
-    this.href = dt;
+    //this.href = dt;
+
+    // Save image to server
+    //alert(dt);
+    var url = 'http://joeybronner.fr/iamproudtoworkatsap/saveimage.php';
+    var data = new FormData();
+    data.append('img', dt);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.onload = function () {
+        console.log(this.responseText);
+    };
+    xhr.send(data);
 }
 
 downloadLnk.addEventListener('click', download, false);
