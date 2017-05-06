@@ -34,21 +34,20 @@ function download () {
     ctx.drawImage(video, 0, 0, 640, 480);
     ctx.drawImage(mask, 0, 0, 640, 480);
 
+    // Download the file locally
     var dt = canvas.toDataURL('image/jpeg');
-    //this.href = dt;
-
-    // Save image to server
-    //alert(dt);
-    var url = 'https://joeybronner.fr/iamproudtoworkatsap/saveimage.php';
-    var data = new FormData();
-    data.append('img', dt);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
-    xhr.onload = function () {
-        console.log(this.responseText);
-    };
-    xhr.send(data);
+    this.href = dt;
+    
+    // Upload the file to the server
+    var u = 'https://joeybronner.fr/iamproudtoworkatsap/saveimage.php';
+    $.ajax({
+        method: "POST",
+        data: { img: dt },
+        url: u, 
+        success: function(response){
+            console.log(response);
+        }
+    });
 }
 
 downloadLnk.addEventListener('click', download, false);
