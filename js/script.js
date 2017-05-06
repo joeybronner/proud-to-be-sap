@@ -39,7 +39,7 @@ function download () {
 
     // Save image to server
     //alert(dt);
-    var url = 'http://joeybronner.fr/iamproudtoworkatsap/saveimage.php';
+    var url = 'https://joeybronner.fr/iamproudtoworkatsap/saveimage.php';
     var data = new FormData();
     data.append('img', dt);
 
